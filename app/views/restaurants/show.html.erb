@@ -1,0 +1,25 @@
+<div class="container mt-5">
+  <%= link_to '<- Back', restaurants_path, class: 'btn btn-light'  %>
+  <div class="card-product">
+    <%= image_tag "https://loremflickr.com/320/240/#{@restaurant.category}" %>
+    <div class="card-product-infos">
+      <h2><%= @restaurant.name %></h2>
+      <p><%= @restaurant.category %></p>
+      <p><%= @restaurant.address %></p>
+    </div>
+  </div>
+  <div class="d-flex gap-4">
+    <% @restaurant.reviews.each do |review| %>
+      <h3><%= review.content %></h3>
+      <h3><%= review.rating %></h3>
+    <% end %>
+  </div>
+  <div>
+    <h3>What's your review for <%= @restaurant.name %></h3>
+    <%= simple_form_for [@restaurant, @review] do |f| %>
+      <%= f.input :content %>
+      <%= f.input :rating %>
+      <%= f.submit "Submit your review", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

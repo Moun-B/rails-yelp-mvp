@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="d-flex justify-content-between align-items-center">
+    <h1>Restaurants</h1>
+  </div>
+  <div class="cards">
+    <% @restaurants.each do |restaurant| %>
+    <div class="card-product">
+      <%= image_tag "https://loremflickr.com/320/240/#{restaurant.category}" %>
+      <div class="card-product-infos">
+        <h2><%= link_to restaurant.name, restaurant_path(restaurant) %></h2>
+        <p><%=restaurant.address%></p>
+        <p><%=restaurant.category%></p>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
